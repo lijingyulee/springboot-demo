@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestListen {
     @EventListener
-//    @Async
+    @Async
     public void testListen(TestEvent event) {
         for (int i = 0; i < 10; i++) {
             System.out.println("event = [" + event.getMsg() + "]");
