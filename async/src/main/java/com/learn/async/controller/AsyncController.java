@@ -70,5 +70,16 @@ public class AsyncController {
         }
     }
 
+    @GetMapping("test-listen-future")
+    public void testListenableFuture() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("i = " + i);
+        }
+        asyncService.getListenableFuture();
+        for (int j = 0; j < 10; j++) {
+            System.out.println("j = " + j);
+        }
+    }
+
 
 }
