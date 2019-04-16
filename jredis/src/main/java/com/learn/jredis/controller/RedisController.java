@@ -16,14 +16,14 @@ public class RedisController {
     private RedisUtils redisUtils;
 
     @GetMapping("test-set-string")
-    public String testSetString() {
-        redisUtils.set("testkey", "testvalue",60L);
+    public String testSetString(String key, String value) {
+        redisUtils.set(key, value,60L);
         return "success set string";
     }
 
     @GetMapping("test-get-string")
-    public String testGetString() {
-        return redisUtils.getString("testkey");
+    public String testGetString(String key) {
+        return redisUtils.getString(key);
     }
 
 }
