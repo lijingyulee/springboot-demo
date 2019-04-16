@@ -1,5 +1,6 @@
 package com.learn.jredis.controller;
 
+import com.learn.jredis.pojo.User;
 import com.learn.jredis.util.RedisUtil2;
 import com.learn.jredis.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,18 @@ public class RedisController {
     public String testGetString2(String key) {
         return redisUtils.getString(key);
     }
+
+    @GetMapping("test-set-obj")
+    public String testSetObj() {
+        User user = new User("木子", 20);
+        redisUtil2.set(user.getUsername(), user);
+        return "success set obj";
+    }
+
+    @GetMapping("test-get-obj")
+    public Object testGetObj(String key) {
+        return redisUtil2.get(key);
+    }
+
 
 }
