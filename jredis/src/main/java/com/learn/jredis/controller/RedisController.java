@@ -36,4 +36,9 @@ public class RedisController {
         return "success set string2";
     }
 
+    @GetMapping("test-get-string2")
+    public String testGetString2(String key) {
+        return redisUtils.getString(key);
+    }
+
 }
