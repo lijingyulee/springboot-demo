@@ -1,6 +1,6 @@
 package com.learn.jredis.controller;
 
-import com.learn.jredis.service.RedisUtils;
+import com.learn.jredis.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +16,8 @@ public class RedisController {
     private RedisUtils redisUtils;
 
     @GetMapping("test-set-string")
-    public String testSetString(String key, String object) {
-        redisUtils.set("test", "testvalue",60L);
+    public String testSetString() {
+        redisUtils.set("testkey", "testvalue",60L);
         return "success set string";
     }
 

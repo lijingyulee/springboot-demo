@@ -1,4 +1,4 @@
-package com.learn.jredis.service;
+package com.learn.jredis.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
