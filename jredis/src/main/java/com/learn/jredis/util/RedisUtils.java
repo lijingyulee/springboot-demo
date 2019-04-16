@@ -27,7 +27,6 @@ public class RedisUtils {
             setSet(key, object);
         }
         // 设置有效期
-
         if (time != null) {
             stringRedisTemplate.expire(key, time, TimeUnit.SECONDS);
         }
