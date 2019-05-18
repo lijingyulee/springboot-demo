@@ -17,6 +17,23 @@ public class SafeThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+//            synchronized (this) {
+//                System.out.println(Thread.currentThread().getName() + ",出售第" + (50 - ticketCount + 1) + "张票");
+//                ticketCount--;
+//            }
+//            sale();
+            sale2();
+        }
+    }
+
+    private synchronized void sale() {
+        System.out.println(Thread.currentThread().getName() + ",出售第" + (50 - ticketCount + 1) + "张票");
+        ticketCount--;
+    }
+
+
+    private void sale2() {
+        synchronized (SafeThread.class) {
             System.out.println(Thread.currentThread().getName() + ",出售第" + (50 - ticketCount + 1) + "张票");
             ticketCount--;
         }
