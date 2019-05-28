@@ -1,6 +1,8 @@
 package com.learn.thread.controller;
 
 import com.learn.thread.pojo.thread.*;
+import com.learn.thread.pojo.thread.communication.CommunicationThread1;
+import com.learn.thread.pojo.thread.communication.CommunicationThread2;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,6 +77,15 @@ public class MyThreadController {
         lt1.start();
         lt2.start();
         lt3.start();
+    }
+
+    @RequestMapping("test-communication")
+    public void testCommunication() {
+        ShareEntity shareEntity = new ShareEntity();
+        CommunicationThread1 thread1 = new CommunicationThread1(shareEntity);
+        CommunicationThread2 thread2 = new CommunicationThread2(shareEntity);
+        thread1.start();
+        thread2.start();
     }
 
 }
