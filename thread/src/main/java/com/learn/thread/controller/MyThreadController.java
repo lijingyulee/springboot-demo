@@ -1,7 +1,6 @@
 package com.learn.thread.controller;
 
-import com.learn.thread.pojo.thread.MyThread;
-import com.learn.thread.pojo.thread.Mythread2;
+import com.learn.thread.pojo.thread.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +55,26 @@ public class MyThreadController {
         }
         System.out.println("主线程end");
 
+    }
+
+    @RequestMapping("test-safe")
+    public void testSafe() {
+        SafeThread safeThread = new SafeThread();
+        Thread t1 = new Thread(safeThread, "thread-1");
+        Thread t2 = new Thread(safeThread, "thread-2");
+        t1.start();
+        t2.start();
+    }
+
+    @RequestMapping("test-local")
+    public void testLocal() {
+        LocalDemo localDemo = new LocalDemo();
+        LocalThread lt1 = new LocalThread(localDemo);
+        LocalThread lt2 = new LocalThread(localDemo);
+        LocalThread lt3 = new LocalThread(localDemo);
+        lt1.start();
+        lt2.start();
+        lt3.start();
     }
 
 }
