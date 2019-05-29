@@ -1,6 +1,7 @@
 # 学习demo
 
-## hello-world 快速搭建springboot
-## async springboot异步与事件监听
-## jredis springboot整合redis
-## thread springboot多线程
+## hello-world 快速搭建
+## async 异步与事件监听
+## jredis 整合redis
+## thread 多线程
+## threadpool 线程池
