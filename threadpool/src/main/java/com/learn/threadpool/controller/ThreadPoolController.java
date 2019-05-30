@@ -6,6 +6,8 @@ import com.learn.threadpool.pojo.semaphore.SemaphoreThread;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 
@@ -39,5 +41,25 @@ public class ThreadPoolController {
             new SemaphoreThread("第" + i + "个人", semaphore).start();
         }
     }
-    
+
+    @RequestMapping("test-clq")
+    public void testConcurrentLinkedQueue() {
+        ConcurrentLinkedDeque<String> q = new ConcurrentLinkedDeque<>();
+        q.offer("Java");
+        q.offer("C#");
+        q.offer("Javascript");
+        q.offer("Python");
+        // 从头获取元素,删除该元素
+        System.out.println(q.poll());
+        // 从头获取元素,不刪除该元素
+        System.out.println(q.peek());
+        // 获取总长度
+        System.out.println(q.size());
+        // 遍历
+        for (String s : q) {
+            System.out.println(s);
+        }
+
+    }
+
 }
