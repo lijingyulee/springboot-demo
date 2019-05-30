@@ -2,8 +2,7 @@ package com.learn.threadpool.controller;
 
 import com.learn.threadpool.pojo.countdownlatch.Thread1;
 import com.learn.threadpool.pojo.countdownlatch.Thread2;
-import com.learn.threadpool.pojo.countdownlatch.semaphore.SemaphoreThread;
-import org.springframework.stereotype.Controller;
+import com.learn.threadpool.pojo.semaphore.SemaphoreThread;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

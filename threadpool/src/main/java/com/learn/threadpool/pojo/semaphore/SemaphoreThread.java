@@ -1,4 +1,4 @@
-package com.learn.threadpool.pojo.countdownlatch.semaphore;
+package com.learn.threadpool.pojo.semaphore;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
