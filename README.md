@@ -5,3 +5,4 @@
 ## jredis 整合redis
 ## thread 多线程
 ## threadpool 线程池
+## exception 异常处理
