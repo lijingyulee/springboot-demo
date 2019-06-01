@@ -2,14 +2,13 @@ package com.learn.threadpool.controller;
 
 import com.learn.threadpool.pojo.countdownlatch.Thread1;
 import com.learn.threadpool.pojo.countdownlatch.Thread2;
+import com.learn.threadpool.pojo.queue.ConsumerThread;
+import com.learn.threadpool.pojo.queue.ProducerThread;
 import com.learn.threadpool.pojo.semaphore.SemaphoreThread;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 /**
  * @author lijy
@@ -58,6 +57,25 @@ public class ThreadPoolController {
         // 遍历
         for (String s : q) {
             System.out.println(s);
+        }
+    }
+
+    @RequestMapping("test-blockingQueue")
+    public void testBlockingQueue() {
+        LinkedBlockingDeque<String> blockingDeque = new LinkedBlockingDeque<>(1);
+        ProducerThread producerThread = new ProducerThread(blockingDeque);
+        ConsumerThread consumerThread = new ConsumerThread(blockingDeque);
+        Thread t1 = new Thread(producerThread, "生产者");
+        Thread t2 = new Thread(consumerThread, "消费者");
+        t1.start();
+        t2.start();
+
+        // 10秒后停止线程
+        try {
+            Thread.sleep(10 * 1000);
+            producerThread.stop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
     }
