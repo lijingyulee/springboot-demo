@@ -1,5 +1,6 @@
 package com.learn.threadpool.controller;
 
+import com.learn.threadpool.pojo.callable.CallThread;
 import com.learn.threadpool.pojo.countdownlatch.Thread1;
 import com.learn.threadpool.pojo.countdownlatch.Thread2;
 import com.learn.threadpool.pojo.queue.ConsumerThread;
@@ -94,6 +95,23 @@ public class ThreadPoolController {
         }
         threadPoolExecutor.shutdown();
     }
+
+    @RequestMapping("test-call")
+    public void testCall() {
+        CallThread callThread = new CallThread();
+        ExecutorService executor = Executors.newCachedThreadPool();
+        Future<String> submit = executor.submit(callThread);
+        try {
+            String s = submit.get();
+            System.out.println("获取结果：" + s);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
 class TaskThred implements Runnable {
