@@ -80,4 +80,33 @@ public class ThreadPoolController {
 
     }
 
+    @RequestMapping("test-threadpool")
+    public void testThreadPool() {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1,
+                6,
+                60L,
+                TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(3));
+
+        for (int i = 0; i < 6; i++) {
+            TaskThred t1 = new TaskThred("任务" + i);
+            threadPoolExecutor.execute(t1);
+        }
+        threadPoolExecutor.shutdown();
+    }
+
 }
+class TaskThred implements Runnable {
+    private String taskName;
+
+    public TaskThred(String taskName) {
+        this.taskName = taskName;
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName()+taskName);
+    }
+
+}
+
