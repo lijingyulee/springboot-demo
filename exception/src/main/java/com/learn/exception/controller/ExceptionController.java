@@ -1,5 +1,6 @@
 package com.learn.exception.controller;
 
+import com.learn.exception.common.exception.custom.CustomException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,11 @@ public class ExceptionController {
         } catch (Exception e) {
             throw new RuntimeException("服务器发生错误，请联系管理员");
         }
+    }
+
+    @RequestMapping("test-custom-exception")
+    public void testCustomException() {
+        throw new CustomException("自定义错误");
     }
 
 }

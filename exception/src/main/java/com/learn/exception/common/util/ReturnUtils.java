@@ -2,6 +2,8 @@ package com.learn.exception.common.util;
 
 import com.learn.exception.common.bean.Result;
 import com.learn.exception.common.bean.ResultCode;
+import com.learn.exception.common.exception.custom.CustomResult;
+import com.learn.exception.common.exception.custom.CustomResultCode;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -47,5 +49,27 @@ public class ReturnUtils {
                 .setSuccess(false)
                 .setMessage(msg);
     }
+
+    public static CustomResult customSuccess(String msg) {
+        log.error(msg);
+        return new CustomResult().setCode(CustomResultCode.Custom_SUCCESS)
+                .setMessage(msg);
+    }
+
+    public static CustomResult customSuccess(String msg, Object data, long totalCount) {
+        log.error(msg);
+        return new CustomResult().setCode(CustomResultCode.Custom_SUCCESS)
+                .setMessage(msg)
+                .setData(data)
+                .setTotalCount(totalCount);
+    }
+
+    public static CustomResult customFail(String msg) {
+        log.error(msg);
+        return new CustomResult().setCode(CustomResultCode.Custom_Fail)
+                .setMessage(msg);
+    }
+
+
 
 }
